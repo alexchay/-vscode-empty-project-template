@@ -17,12 +17,12 @@ tasks:
     cmds:
       - python src/main.py
 
-  bump_calver:
+  bump-calver:
     desc: Bump Cal version
     cmds:
       - ./bump_calver_build.sh
 
-  bump_semver:
+  bump-semver:
     desc: Bump Sem version
     cmds:
       - ./bump_semver_patch.sh
