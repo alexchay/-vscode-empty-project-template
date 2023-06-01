@@ -1,0 +1,126 @@
+
+[project]
+# Support Python 3.9+.
+requires-python = ">=3.9"
+
+
+[tool.poetry]
+name = "VS Code Empty Python Project Template"
+version = "0.1.1"
+description = "A template for a empty Python project that uses the VS Code"
+authors = ["Alexander Chaikovsky <alexac@s88s.name>"]
+
+readme = "README.md"
+homepage = "https://alexchay.github.io/"
+repository = "https://github.com/alexchay/vscode-empty-python-project-template"
+keywords = ["vscode", "python", "project"]
+
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+]
+
+# main dependency group
+# poetry install --only main
+[tool.poetry.dependencies]
+python = "^3.9"
+
+
+[tool.poetry.group.dev.dependencies]
+pylint = "^2.8.3"
+ruff = "^0.0.270"
+commitizen = "*"
+bump2version = "*"
+bpython = "*"
+pdbpp = "*"
+#flake8 = "*"
+#flake8-bugbear = "*"
+mypy = "*"
+black = { version = "*", allow-prereleases = true }
+rope = "*"
+types-setuptools = "*"
+pre-commit = "^3.3.1"
+
+# poetry install --with docs
+[tool.poetry.group.docs]
+optional = true
+[tool.poetry.group.docs.dependencies]
+mkdocs = "*"
+mkdocs-material = "*"
+
+# poetry install --with test
+[tool.poetry.group.test]
+optional = true
+[tool.poetry.group.test.dependencies]
+pytest = "*"
+pytest-asyncio = "*"
+pytest-cov = "^3.0.0"
+pytest-custom-exit-code = "*"
+
+
+
+[tool.poetry.scripts]
+
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+tag_format = "v$version"
+version_type = "pep440"
+version_provider = "poetry"
+update_changelog_on_bump = true
+bump_message = "bump: version $current_version → $new_version"
+annotated_tag = false
+version_files = [
+    "VERSION",
+    "pyproject.toml:version"
+]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.mypy]
+python_version = "3.9"
+check_untyped_defs = true
+disallow_any_generics = true
+disallow_untyped_calls = true
+ignore_errors = false
+ignore_missing_imports = true
+strict_optional = true
+warn_unused_ignores = true
+warn_redundant_casts = true
+warn_unused_configs = true
+warn_return_any = true
+warn_no_return = true
+warn_unreachable = true
+
+[tool.ruff]
+# Increase the maximum line length to 150 characters.
+line-length = 150
+src = ["src", "tests"]
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    # "I",  # isort
+    "C",  # flake8-comprehensions
+    "B",  # flake8-bugbear
+]
+ignore = [
+    "E501",  # line too long, handled by black
+    "B008",  # do not perform function calls in argument defaults
+    "C901",  # too complex
+]
+
+[tool.ruff.per-file-ignores]
+"__init__.py" = ["F401"]
+
+[tool.ruff.isort]
+known-third-party = ["fastapi", "pydantic", "starlette"]
