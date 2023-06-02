@@ -6,7 +6,7 @@ requires-python = ">=3.9"
 
 [tool.poetry]
 name = "VS Code Empty Python Project Template"
-version = "0.1.1"
+version = "0.1.2"
 description = "A template for a empty Python project that uses the VS Code"
 authors = ["Alexander Chaikovsky <alexac@s88s.name>"]
 
