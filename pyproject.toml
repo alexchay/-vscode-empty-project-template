@@ -1,20 +1,31 @@
-
 [project]
-# Support Python 3.9+.
-requires-python = ">=3.9"
-
-
-[tool.poetry]
-name = "VS Code Empty Python Project Template"
+name = "empty-python-project"
 version = "0.1.2"
-description = "A template for a empty Python project that uses the VS Code"
-authors = ["Alexander Chaikovsky <alexac@s88s.name>"]
+description = "Empty Python project template for VSCode"
+authors = [
+  {email = "alexchay@gmail.com"},
+  {name = "Alexander Chaikovsky"}
+]
 
 readme = "README.md"
+keywords = ["vscode", "python", "project"]
+requires-python = ">=3.9"
+license = {file = "LICENSE", name = "MIT"}
+
+[project.urls]
+homepage = "https://alexchay.github.io/"
+repository = "https://github.com/alexchay/vscode-empty-python-project-template"
+
+[tool.poetry]
+name = "empty-python-project"
+version = "0.1.2"
+description = "Empty Python project template for VSCode"
+authors = ["Alexander Chaikovsky <alexchay@gmail.com>"]
+readme = "README.md"
+license = "MIT"
 homepage = "https://alexchay.github.io/"
 repository = "https://github.com/alexchay/vscode-empty-python-project-template"
 keywords = ["vscode", "python", "project"]
-
 classifiers = [
     "Development Status :: 4 - Beta",
     "Programming Language :: Python",
@@ -26,6 +37,15 @@ classifiers = [
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
 ]
+packages = [{include = "empty_project", from = "src"}]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+# [build-system]
+# requires = ["setuptools", "wheel"]
+# build-backend = "setuptools.build_meta"
 
 # main dependency group
 # poetry install --only main
@@ -34,6 +54,7 @@ python = "^3.9"
 
 
 [tool.poetry.group.dev.dependencies]
+build = "^0.10.0"
 pylint = "^2.8.3"
 ruff = "^0.0.270"
 commitizen = "*"
@@ -43,10 +64,14 @@ pdbpp = "*"
 #flake8 = "*"
 #flake8-bugbear = "*"
 mypy = "*"
+mypy-extensions = "^1.0.0"
+pyyaml = "^6.0"
 black = { version = "*", allow-prereleases = true }
 rope = "*"
 types-setuptools = "*"
 pre-commit = "^3.3.1"
+tox = "^4.6.2"
+cookiecutter = "^2.1.1"
 
 # poetry install --with docs
 [tool.poetry.group.docs]
@@ -82,9 +107,6 @@ version_files = [
     "pyproject.toml:version"
 ]
 
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
 
 [tool.mypy]
 python_version = "3.9"
