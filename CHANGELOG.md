@@ -1,4 +1,10 @@
-## v2023.06.01.2 (2023-06-02)
+## v0.1.3 (2023-08-08)
+
+### Fix
+
+- **proj**: Make 'license' field is valid in pyproject
+
+## v0.1.2 (2023-06-02)
 
 ### Fix
 

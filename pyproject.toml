@@ -1,6 +1,6 @@
 [project]
 name = "empty-python-project"
-version = "0.1.2"
+version = "0.1.3"
 description = "Empty Python project template for VSCode"
 authors = [{ email = "alexchay@gmail.com" }, { name = "Alexander Chaikovsky" }]
 
@@ -15,7 +15,7 @@ repository = "https://github.com/alexchay/vscode-empty-python-project-template"
 
 [tool.poetry]
 name = "empty-python-project"
-version = "0.1.2"
+version = "0.1.3"
 description = "Empty Python project template for VSCode"
 authors = ["Alexander Chaikovsky <alexchay@gmail.com>"]
 readme = "README.md"
