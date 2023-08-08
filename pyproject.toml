@@ -7,7 +7,7 @@ authors = [{ email = "alexchay@gmail.com" }, { name = "Alexander Chaikovsky" }]
 readme = "README.md"
 keywords = ["vscode", "python", "project"]
 requires-python = ">=3.9"
-license = { file = "LICENSE", name = "MIT" }
+license = "MIT"
 
 [project.urls]
 homepage = "https://alexchay.github.io/"
