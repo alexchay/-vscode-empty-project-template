@@ -24,19 +24,6 @@
             "args": [
                 "-vvvv",
             ]
-        },
-        {
-            "name": "Debug in Production Environment",
-            "type": "python",
-            "request": "launch",
-            "program": "${workspaceFolder}/main.py",
-            "console": "integratedTerminal",
-            "cwd": "${workspaceFolder}/",
-            "justMyCode": false,
-            "envFile": "${workspaceFolder}/.env_prod",
-            "args": [
-                "-vvvv",
-            ]
         }
     ]
 }
