@@ -4,43 +4,12 @@ version: "3"
 vars:
   CODE_DIRS: src/ tests/
   PYTHON_VERSION: 3.10
-  GREETING: Hello, World!
 
 tasks:
   default:
     cmds:
-      - echo "{{.GREETING}}"
+      - poetry env info
     silent: true
-
-  run:
-    desc: Run the main application
-    cmds:
-      - python src/main.py
-
-  bump-calver:
-    desc: Bump Cal version
-    cmds:
-      - ./bump_calver_build.sh
-
-  bump-semver:
-    desc: Bump Sem version
-    cmds:
-      - ./bump_semver_patch.sh
-
-  netbox:
-    dir: ~/projects/netbox-docker
-    cmds:
-      - docker compose up -d
-
-  netbox-openapi:
-    desc: download NetBox openapi schema
-    cmds:
-      - wget http://localhost:8000/api/docs/\?format\=openapi -O netbox-openapi.json
-
-  generate-netbox-models:
-    desc: generate pydantic models for NetBox openapi schema
-    cmds:
-      - datamodel-codegen --input netbox-openapi.json --output model.py
 
   install:
     desc: Install required dependencies
@@ -78,7 +47,6 @@ tasks:
     desc: Clean up and reinstall required dependencies
     cmds:
       - task: clean
-      # - virtualenv -p python{{.PYTHON_VERSION}} .venv
       - task: install
 
   update:
@@ -96,6 +64,11 @@ tasks:
     cmds:
       - poetry build
 
+  run:
+    desc: Run the main application
+    cmds:
+      - python src/main.py
+
   publish:
     desc: Build and publish wheels and sdist to PyPi
     cmds:
@@ -104,22 +77,49 @@ tasks:
   pytest:
     desc: Run tests
     cmds:
-      - poetry run pytest tests
+      - poetry run pytest tests -vv -s --lf -x -l --import-mode prepend --disable-pytest-warnings --cov=src --cov-report=term-missing --cov-report=html --cov-report=xml --cov-fail-under=80 --cov-branch
+
+  tox:
+    desc: Run tox
+    cmds:
+      - poetry run tox -v --parallel auto
+      # - poetry run tox -- -vv -s --lf -x -l --cov=src --cov-report=term-missing --cov-report=html --cov-report=xml --cov-fail-under=80 --cov-branch
+
+  tox-typecheck:
+    desc: Run tox testenv typecheck
+    cmds:
+      - poetry run tox -v -e typecheck
+
+  tox-format:
+    desc: Run tox testenv format
+    cmds:
+      - poetry run tox -v -e format
+
+  tox-lint:
+    desc: Run tox testenv line
+    cmds:
+      - poetry run tox -v -e lint
+
+  tox-all:
+    desc: Run tox all test environments
+    cmds:
+      - poetry run tox -v -e py39,py310,typecheck,format,lint --parallel
+
 
   mypy:
     desc: Run static type checker mypy
     cmds:
-      - poetry run mypy {{.CODE_DIRS}}
+      - poetry run mypy --ignore-missing-imports {{.CODE_DIRS}}
 
   black:
     desc: Run code formatter
     cmds:
-      - poetry run black {{.CODE_DIRS}}
+      - poetry run black {{.CODE_DIRS}} --diff
 
   black-check:
     desc: Verify code formatting
     cmds:
-      - poetry run black {{.CODE_DIRS}} --check
+      - poetry run black {{.CODE_DIRS}} --check --diff
 
   flake8:
     desc: Run linter flake8
@@ -147,6 +147,7 @@ tasks:
       - task: black-check
       - task: flake8
       - task: mypy
+      - task: ruff
 
   build-docs:
     desc: Build docs
@@ -175,3 +176,23 @@ tasks:
     cmds:
       - task: static-analysis
       - task: pytest
+
+  bump-calver:
+    desc: Bump Cal version
+    cmds:
+      - ./bump_calver_build.sh
+
+  bump-semver:
+    desc: Bump Sem version
+    cmds:
+      - ./bump_semver_patch.sh
+
+  bump-semver-patch:
+    desc: Bump Patch of SemVer
+    cmds:
+      - cz bump --increment PATCH
+
+  bump-semver-minor:
+    desc: Bump Minor of SemVer
+    cmds:
+      - cz bump --increment MINOR
