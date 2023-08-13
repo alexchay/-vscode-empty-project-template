@@ -1,3 +1,5 @@
+[![CI](https://github.com/alexchay/python-project-template/actions/workflows/basic.yml/badge.svg)](https://github.com/alexchay/python-project-template/actions/workflows/basic.yml)
+
 ### Managing Multiple Python Versions With pyenv
 
 ```shell
