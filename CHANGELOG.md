@@ -1,3 +1,13 @@
+## v0.2.0 (2023-08-13)
+
+### Feat
+
+- Update source code
+
+### Fix
+
+- **proj**: Fix install poetry group docs
+
 ## v0.1.3 (2023-08-08)
 
 ### Fix

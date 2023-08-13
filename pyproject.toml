@@ -4,7 +4,7 @@
 
 [project]
 name = "python-project-template"
-version = "0.1.3"
+version = "0.2.0"
 description = "Python project template"
 authors = [{ email = "alexchay@gmail.com" }, { name = "Alexander Chaikovsky" }]
 # Pypi classifiers: https://pypi.org/classifiers/
@@ -35,7 +35,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "python-project-template"
-version = "0.1.3"
+version = "0.2.0"
 description = "Python project template"
 authors = ["Alexander Chaikovsky <alexchay@gmail.com>"]
 readme = "README.md"
