@@ -1,4 +1,14 @@
 {
+    "python.testing.pytestEnabled": false,
+    "pythonTestExplorer.testFramework": "pytest",
+    "ruff.organizeImports": true,
+    "ruff.logLevel": "info",
+    "ruff.args": [
+        "--select=ALL",
+        "--ignore=D,T20"
+    ],
+    "testExplorer.onReload": "retire",
+    "testExplorer.hideEmptyLog": false,
     // Python
     "[python]": {
         "editor.formatOnPaste": false,
@@ -35,5 +45,8 @@
         "--disable=C0114",
         "--disable=C0301",
         "--max-line-length=140"
-    ]
+    ],
+    "github-actions.remote-name": "github",
+    "github-actions.workflows.pinned.workflows": [],
+    "github-actions.workflows.pinned.refresh.enabled": true
 }

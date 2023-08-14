@@ -259,7 +259,6 @@ ignore = [
 
 [tool.ruff.isort]
 known-third-party = ["fastapi", "pydantic", "starlette"]
-readme = "README.md"
 
 
 [tool.commitizen]
