@@ -42,7 +42,7 @@ jobs:
         if: ${{ matrix.platform != 'windows-latest' }}  # windows hangs if using a cached venv
 
       - name: Install Dependencies
-        run: install_with_dev
+        run: task install_with_dev
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
 
       - name: Analysing the code with pylint
